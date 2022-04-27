@@ -13,3 +13,15 @@ export const newExercise = (user, workoutId, addExercise) => {
         data: {exercise: addExercise}
     })
 }
+
+// update function 
+export const updateExercise = (user, workoutId, exerciseId, editExercise) => {
+    return axios({
+        url: `${apiUrl}/exercise/${workoutId}/${exerciseId}`,
+        method: 'PATCH',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: {exercise: editExercise}
+    })
+}
