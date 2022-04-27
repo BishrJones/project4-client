@@ -22,3 +22,15 @@ export const getMyWorkouts = (user) => {
 export const getOwnerWorkouts = (ownerId) => {
     return axios(`${apiUrl}/workouts/${ownerId}`)
 }
+
+// create function whihch interacts with the pose route
+export const createWorkout = (user, newWorkout) => {
+    return axios({
+        url: `${apiUrl}/workouts`,
+        method: 'POST',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: {workout: newWorkout}
+    })
+}
