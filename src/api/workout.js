@@ -34,3 +34,16 @@ export const createWorkout = (user, newWorkout) => {
         data: {workout: newWorkout}
     })
 }
+
+// update function to interact with the patch route
+export const updateWorkout = (user, updateWorkout) => {
+    return axios({
+        url: `${apiUrl}/workouts/${updateWorkout._id}`,
+        method: 'PATCH',
+        header: {
+            Authorization: `Token token=${user.token}` 
+        },
+        date: {workout: updateWorkout}
+
+    })
+}
