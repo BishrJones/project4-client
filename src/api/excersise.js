@@ -25,3 +25,14 @@ export const updateExercise = (user, workoutId, exerciseId, editExercise) => {
         data: {exercise: editExercise}
     })
 }
+
+// delete function 
+export const removeExercise = (user, workoutId, exerciseId) => {
+    return axios({
+        url: `${apiUrl}/exercise/${workoutId}/${exerciseId}`,
+        method: 'DELETE',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+    })
+}
