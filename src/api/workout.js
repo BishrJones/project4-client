@@ -47,3 +47,14 @@ export const updateWorkout = (user, updateWorkout) => {
 
     })
 }
+
+// remove function to interact with the delete route 
+export const deleteWorkout = (user, workoutId) => {
+    return axios({
+        url: `${apiUrl}/workouts/${workoutId}`,
+        method: 'DELETE',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
+    })
+}
