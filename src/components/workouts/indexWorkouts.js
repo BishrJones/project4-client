@@ -22,3 +22,5 @@ const IndexWorkouts = (props) => {
         return <p>Looks like there are no workouts, Let's add some!</p>
     }
 }
+
+export default IndexWorkouts

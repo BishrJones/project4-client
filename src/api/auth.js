@@ -43,7 +43,7 @@ export const changePassword = (passwords, user) => {
 		url: apiUrl + '/change-password',
 		method: 'PATCH',
 		headers: {
-			Authorization: `Token token=${user.token}`,
+			Authorization: `Token ${user.token}`,
 		},
 		data: {
 			passwords: {
