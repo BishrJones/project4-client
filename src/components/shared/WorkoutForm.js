@@ -71,6 +71,7 @@ const WorkoutForm = (props) => {
                         />
                 </Col>
             </Row>
+            <Button type='submit'>Submit</Button>
             </Form>
         </Container>
     )
