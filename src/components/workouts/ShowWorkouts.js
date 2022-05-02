@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect } from 'react'
 import { getOneWorkout, removeWorkout, updateWorkout } from '../../api/workout'
 import { useParams, useNavigate } from 'react-router-dom'
 import CommentForm from '../comments/CommentForm'
@@ -19,14 +19,21 @@ const ShowWorkouts = (props) => {
     const {user} = props
 
     useEffect(() => {
-        // console.log('key', process.env.REACT_APP_WEATHERAPIKEY)
-        //calls the api to get a specific adventure
+        
+        //calls the api to get a specific workout
         getOneWorkout(id)
             .then(res => {
                 setWorkout(res.data.wrkout)
             })
             .catch(console.error)  
     }, [updated, id])
+
+      //delete's an workout
+      const removeTheWorkout = () => {
+        removeWorkout(user, workout._id)
+            .then(() => {navigate(`/workouts`)})
+            .catch(console.error)
+    }
 
     if (!workout) {
         return <p>Loading...</p>
