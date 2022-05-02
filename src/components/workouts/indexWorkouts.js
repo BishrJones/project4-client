@@ -1,7 +1,13 @@
 import React, {useState, useEffect } from 'react'
-import { getAllWorkouts } from '../../api/workouts'
-import { Card } from 'react-bootstrap'
-import { Link } from 'react-rotuer-dom'
+import { getAllWorkouts } from '../../api/workout'
+import { Card, Row, Col } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+
+const cardContainerLayout = {
+    display: 'flex',
+    justifyContent: 'center',
+    flexFlow: 'row wrap'
+}
 
 const IndexWorkouts = (props) => {
     const [workouts, setWorkouts] = useState(null)
@@ -27,11 +33,25 @@ const IndexWorkouts = (props) => {
     if (workouts.length > 0) {
         workoutCards = workouts.map(workout => {
             return (
+                
                 <Card key={workout._id} style={{width: '30%' }} className="m-2 shadow p-3 mb-5 bg-body rounded">
-                    <img src= {activity} alt= 'activity' className= 'card-img-top'></img>
+                    
                     <Card.Header>{workout.name} </Card.Header>
                     <Card.Body>
                         <Card.Text>
+                        <Row>
+                                <Col>
+                                    <small>Muscle Group: {workout.muscleTargeted}</small><br/>
+                                </Col>
+                                <Col>
+                                    <small>Intensity: {workout.intensity}</small><br/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col>
+                                    <small>time: {workout.time} mins</small><br/>
+                                </Col>
+                            </Row>
                             <Link className='viewworkout' to={`/workouts/${workout._id}`}>View {workout.type}</Link>
                         </Card.Text>
                     </Card.Body>

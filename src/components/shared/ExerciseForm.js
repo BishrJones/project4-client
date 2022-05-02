@@ -1,4 +1,4 @@
-import { Form, Container, Buttom }from 'react-bootstrap'
+import { Form, Container, Button }from 'react-bootstrap'
 
 const ExerciseForm = (props) => {
     const {exercise, handleChange, handleSubmit, heading} = props
@@ -43,3 +43,5 @@ const ExerciseForm = (props) => {
         </Container>
     )
 }
+
+export default ExerciseForm

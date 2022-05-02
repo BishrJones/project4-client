@@ -1,11 +1,12 @@
 import React, {useState, useEffect } from 'react'
+import { Spinner, Container, Card, Button, Row, Col } from 'react-bootstrap'
 import { getOneWorkout, removeWorkout, updateWorkout } from '../../api/workout'
 import { useParams, useNavigate } from 'react-router-dom'
 import CommentForm from '../comments/CommentForm'
 import ShowComment from '../comments/ShowComment'
 import ShowExercise from '../exercise/ShowExercise'
 import AddExercise from '../exercise/AddExercise'
-// import EditWorkout from './EditWorkout'
+import EditWorkout from './EditWorkout'
 
 const ShowWorkouts = (props) => {
     // setting all the damn states 
@@ -46,8 +47,8 @@ const ShowWorkouts = (props) => {
     //after we find an workout, this checks for and renders exercise and comments respectively
     if(workout){
         if (workout.exercise.length > 0) {
-            exerciseCards = exercise.workout.map(workoutItem => (
-                // need to pass all props needed for updateexercise func in edit modal
+            exerciseCards = workout.exercise.map(exerciseItem => (
+                // need to pass all props needed for update exercise func in edit modal
                 <ShowExercise 
                     key={exerciseItem._id} exercise={exerciseItem} user={user} workout={workout} triggerRefresh={() => setUpdated(prev => !prev)}
                 />
@@ -102,7 +103,7 @@ const ShowWorkouts = (props) => {
                                 <Button onClick={() => setModalOpen(true)} className="m-2" variant="warning">
                                     Edit Workout
                                 </Button>
-                                <Button className="m-2" variant="danger" onClick={removeTheworkout}>
+                                <Button className="m-2" variant="danger" onClick={removeTheWorkout}>
                                     Delete Workout
                                 </Button>
         

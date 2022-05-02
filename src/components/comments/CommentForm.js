@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Form, Container, Button } from 'react-bootstrap'
-import { addComment } from '../../api/comments'
+import { newComment } from '../../api/comment'
 
 const CommentForm = (props) => {
     const { workout, heading, triggerRefresh, user } = props
@@ -30,7 +30,7 @@ const CommentForm = (props) => {
         e.preventDefault()
 
         // make an api call to make a new comment
-        addComment(user, workout._id, comment)
+        newComment(user, workout._id, comment)
             .then(()=> clearField())
             .then(()=> triggerRefresh())
             // catch for err

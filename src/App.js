@@ -13,7 +13,10 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import CreateWorkout from './components/workouts/CreateWorkout'
-
+import IndexWorkouts from './components/workouts/IndexWorkouts'
+import UserWorkouts from './components/workouts/UserWorkouts'
+import ShowWorkouts from './components/workouts/ShowWorkouts'
+import OwnerWorkouts from './components/workouts/OwnerWorkouts'
 const App = () => {
 
   const [user, setUser] = useState(null)
@@ -78,12 +81,36 @@ const App = () => {
 			}		  
 		  />
 		  <Route
-		  path='/allWorkout'
+		  path='/allWorkouts'
 		  		element={
 					<RequireAuth user={user}>
-						<indexWorkouts msgAlert={msgAlert} user={user}/>
+						<IndexWorkouts msgAlert={msgAlert} user={user}/>
 					</RequireAuth>
 				  }
+		  />
+		  <Route
+		  path='/workouts/:workoutId'
+		  		element={
+					<RequireAuth user={user}>
+						<ShowWorkouts msgAlert={msgAlert} user={user}/>
+					</RequireAuth>
+				  }
+		  />
+		  <Route
+		  path='/workouts/user/:ownerId'
+		  		element={
+					<RequireAuth user={user}>
+						<OwnerWorkouts msgAlert={msgAlert} user={user}/>
+					</RequireAuth>
+				  }
+		  />
+		  <Route 
+		  	path='/workouts/mine'
+			element={
+				<RequireAuth>
+					<UserWorkouts msgAlert={msgAlert} user={user}/>
+				</RequireAuth>
+			}
 		  />
 				</Routes>
 				{msgAlerts.map((msgAlert) => (

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { getMyWorkouts } from '../../api/workout'
+import { getOwnerWorkouts } from '../../api/workout'
 import { Card, Spinner, Container, Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 const cardContainerLayout = {
     display: 'flex',
@@ -9,26 +9,27 @@ const cardContainerLayout = {
     flexFlow: 'row wrap'
 }
 
-const UserWorkouts = (props) => {
-    const [userWorkouts, setUserWorkouts] = useState(null)
-
+const OwnerWorkouts = (props) => {
+    const [ownerWorkouts, setOwnerWorkouts] = useState(null)
+    const {ownerId} = useParams()
     const {user} = props
 
+
     useEffect(() => {
-        // console.log('user id', user._id)
-        //api call to get all workouts made by the current user
-        getMyWorkouts(user)
+        // console.log('owner id', owner._id)
+        //api call to get all workouts made by the current owner
+        getOwnerWorkouts(ownerId)
             .then(res => {
                 console.log('res.data', res.data)
-                setUserWorkouts(res.data.workouts)
+                setOwnerWorkouts(res.data.workouts)
             })
             .catch(console.error)
             
-    }, [user])
+    }, [ownerId, user])
 
 
     let workoutCards
-    if (!userWorkouts) {
+    if (!ownerWorkouts) {
         return ( 
                 <Container fluid className='' >
                     <Spinner animation="border" role="status">
@@ -37,18 +38,16 @@ const UserWorkouts = (props) => {
                 </Container>
         )
     }
-
-    if (userWorkouts.length === 0) {
+    if (ownerWorkouts.length === 0) {
         return (
-            <div>
-                <h3> My Workouts</h3>   
-                <p>Go Make Some Workouts!</p>
+            <div> 
+                <p>Looks like this user does not have any workouts.</p>
             </div>
         )
     }
 
-    if (userWorkouts.length > 0) {
-        workoutCards = userWorkouts.map(workout => {
+    if (ownerWorkouts.length > 0) {
+        workoutCards = ownerWorkouts.map(workout => {
                
             return (
                 <Card key={workout._id} style={{width: '30%' }} className="m-2 shadow p-3 mb-5 bg-body rounded">
@@ -72,7 +71,7 @@ const UserWorkouts = (props) => {
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                        <span>by:</span><Link to={`/workouts/user/${workout.owner._id}`}>{workout.owner.email}</Link>
+                        <span>by:</span><Link to={`/workouts/owner/${workout.owner._id}`}>{workout.owner.email}</Link>
                     </Card.Footer>
                 </Card>
             )
@@ -82,7 +81,7 @@ const UserWorkouts = (props) => {
     return (
         <>
         <br></br>
-           <div className='title'><h1>My Workouts</h1></div>
+           <div className='title'><h1>Workouts</h1></div>
             <div style={cardContainerLayout}>
                 {workoutCards}
             </div>
@@ -90,4 +89,4 @@ const UserWorkouts = (props) => {
     )
 }
 
-export default UserWorkouts
+export default OwnerWorkouts

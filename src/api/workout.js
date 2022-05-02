@@ -23,6 +23,10 @@ export const getOwnerWorkouts = (ownerId) => {
     return axios(`${apiUrl}/workouts/${ownerId}`)
 }
 
+export const getOneWorkout = (workoutId) => {
+    return axios(`${apiUrl}/workouts/${workoutId}`)
+}
+
 // create function whihch interacts with the pose route
 export const createWorkout = (user, newWorkout) => {
     return axios({
@@ -49,7 +53,7 @@ export const updateWorkout = (user, updateWorkout) => {
 }
 
 // remove function to interact with the delete route 
-export const deleteWorkout = (user, workoutId) => {
+export const removeWorkout = (user, workoutId) => {
     return axios({
         url: `${apiUrl}/workouts/${workoutId}`,
         method: 'DELETE',

@@ -32,7 +32,7 @@ const ShowExercise = (props) => {
                             <Button variant="warning" onClick={() => setShowEditModal(true)}>
                                 Edit Exercise
                             </Button>
-                            <Button onClick={() => destroyExercise()}variant="danger">
+                            <Button onClick={() => removeExercise()}variant="danger">
                                 Delete Exercise
                             </Button>
                         </>

@@ -10,7 +10,7 @@ const EditWorkout = (props) => {
     const handleChange = (e) => {
         e.persist()
 
-        setWorkout(preWorkout => {
+        setWorkout(prevWorkout => {
             const name = e.target.name
             let value = e.target.value
 
@@ -19,7 +19,7 @@ const EditWorkout = (props) => {
             }
 
             const updatedValue = { [name]: value }
-            return {...prevworkout, ...updatedValue}
+            return {...prevWorkout, ...updatedValue}
 
         })
 

@@ -21,8 +21,8 @@ const ShowComment = (props) => {
                         user._id === comment.owner &&
                             <>
                                 <div className="float-end">
-                                <Button className='btn-sm' onClick={() => destroyComment()}variant="danger">
-                                    X
+                                <Button className='btn-sm' onClick={() => deleteComment()}variant="danger">
+                                    Delete
                                 </Button>
                                 </div>
                             </>

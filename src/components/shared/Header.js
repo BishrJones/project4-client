@@ -14,6 +14,11 @@ const authenticatedOptions = (
 			</Link>
 		</Nav.Item>
 		<Nav.Item className= 'm-2'>
+			<Link to='/workouts/mine' style={linkStyle}>
+				My Workouts
+			</Link>
+		</Nav.Item>
+		<Nav.Item className= 'm-2'>
 			<Link to='addWorkout' style={linkStyle}>
 				New Workout
 			</Link>
