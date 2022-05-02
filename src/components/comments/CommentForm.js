@@ -53,3 +53,5 @@ const CommentForm = (props) => {
     </Container>
     )
 }
+
+export default CommentForm
