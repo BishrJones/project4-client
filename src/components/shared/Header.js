@@ -9,6 +9,11 @@ const linkStyle = {
 const authenticatedOptions = (
 	<>
 		<Nav.Item className= 'm-2'>
+			<Link to='allWorkouts' style={linkStyle}>
+				All Workouts
+			</Link>
+		</Nav.Item>
+		<Nav.Item className= 'm-2'>
 			<Link to='addWorkout' style={linkStyle}>
 				New Workout
 			</Link>
@@ -37,15 +42,15 @@ const unauthenticatedOptions = (
 	</>
 )
 
-const alwaysOptions = (
-	<>
-		<Nav.Link className='m-2'>
-			<Link  to='/' style={linkStyle}>
-				Home
-			</Link>
-		</Nav.Link>
-	</>
-)
+// const alwaysOptions = (
+// 	<>
+// 		<Nav.Link className='m-2'>
+// 			<Link  to='/' style={linkStyle}>
+// 				Home
+// 			</Link>
+// 		</Nav.Link>
+// 	</>
+// )
 
 const Header = ({ user }) => (
 	<Navbar sticky= 'top' bg='myColor' variant='dark' expand='md'>
@@ -60,7 +65,7 @@ const Header = ({ user }) => (
 				{user && (
 					<span className='navbar-text mr-2'>Welcome, {user.email}</span>
 				)}
-				{alwaysOptions}
+				{/* {alwaysOptions} */}
 				{user ? authenticatedOptions : unauthenticatedOptions}
 			</Nav>
 		</Navbar.Collapse>

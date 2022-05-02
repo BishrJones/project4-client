@@ -77,6 +77,14 @@ const App = () => {
 				</RequireAuth>
 			}		  
 		  />
+		  <Route
+		  path='/allWorkout'
+		  		element={
+					<RequireAuth user={user}>
+						<indexWorkouts msgAlert={msgAlert} user={user}/>
+					</RequireAuth>
+				  }
+		  />
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert
