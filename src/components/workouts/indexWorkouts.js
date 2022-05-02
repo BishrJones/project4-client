@@ -21,6 +21,40 @@ const IndexWorkouts = (props) => {
     } else if (workouts.length=== 0){
         return <p>Looks like there are no workouts, Let's add some!</p>
     }
+
+    let workoutCards
+
+    if (workouts.length > 0) {
+        workoutCards = workouts.map(workout => {
+            return (
+                <Card key={workout._id} style={{width: '30%' }} className="m-2 shadow p-3 mb-5 bg-body rounded">
+                    <img src= {activity} alt= 'activity' className= 'card-img-top'></img>
+                    <Card.Header>{workout.name} </Card.Header>
+                    <Card.Body>
+                        <Card.Text>
+                            <Link className='viewworkout' to={`/workouts/${workout._id}`}>View {workout.type}</Link>
+                        </Card.Text>
+                    </Card.Body>
+                    <Card.Footer>
+                        {/* link to all workouts made by a specific user */}
+                        <span>by:</span><Link to={`/workouts/user/${workout.owner._id}`}>{workout.owner.email}</Link>
+                    </Card.Footer>
+                </Card>
+            )
+        })
+    }
+
+    return (
+        <div>
+        <br></br>
+            <div className= 'title'><h1>All Workouts</h1></div>
+            <div style={cardContainerLayout}>
+                {workoutCards}
+            </div>
+        </div>
+    )
 }
+
+
 
 export default IndexWorkouts

@@ -47,7 +47,7 @@ const WorkoutForm = (props) => {
                         width: '100%',
                         textAlign: 'center'
                     }}
-                    placeholder='Chest and Triceps'
+                    placeholder='3'
                     value={workout.intensity}
                     type='number'
                     min='1'

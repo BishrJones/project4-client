@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import WorkoutForm from '../shared/WorkoutForm'
-import { createWorkout } from '../shared/AutoDismissAlert/messages'
+import { createWorkout } from '../../api/workout'
 import { createWorkoutFailure } from '../shared/AutoDismissAlert/messages'
 
 const CreateWorkout = (props) => {
@@ -11,6 +11,24 @@ const CreateWorkout = (props) => {
 
     const [workout, setWorkout ] = useState({name: '', muscleTargeted: '', intensity: '', time:''})
     
+    const handleChange = (e) => {
+        e.persist()
+
+        setWorkout(prevWorkout => {
+            const name = e.target.name
+            let value = e.target.value
+            console.log('e.target type', e.target.type)
+
+            if (e.target.type === 'number') {
+                value = parseInt(e.target.value)
+            }
+
+            const updatedValue = { [name]: value }
+
+            return {...prevWorkout, ...updatedValue}
+        })        
+    }
+
     const handleSubmit = (e) => {
         // e === event
         e.preventDefault()
@@ -31,7 +49,7 @@ const CreateWorkout = (props) => {
             return (
             <WorkoutForm 
                 workout={workout}
-                // handleChange={handleChange}
+                handleChange={handleChange}
                 handleSubmit={handleSubmit}
                 heading="Add New Workout!"
             />
