@@ -43,7 +43,7 @@ const EditExercise = (props) => {
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton></Modal.Header>
             <Modal.Body>
-                <GearForm
+                <ExerciseForm
                     exercise={exercise}
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
@@ -53,3 +53,5 @@ const EditExercise = (props) => {
         </Modal>
     )
 }
+
+export default EditExercise
