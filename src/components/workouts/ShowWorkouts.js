@@ -15,6 +15,19 @@ const ShowWorkouts = (props) => {
     const [updated, setUpdated] = useState(false)
     const navigate = useNavigate()
 
+    const { id } = useParams()
+    const {user} = props
+
+    useEffect(() => {
+        // console.log('key', process.env.REACT_APP_WEATHERAPIKEY)
+        //calls the api to get a specific adventure
+        getOneWorkout(id)
+            .then(res => {
+                setWorkout(res.data.wrkout)
+            })
+            .catch(console.error)  
+    }, [updated, id])
+
     if (!workout) {
         return <p>Loading...</p>
     } 
