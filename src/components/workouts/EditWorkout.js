@@ -38,4 +38,20 @@ const EditWorkout = (props) => {
         // console.log('this is the workout', workout)
     }
 
+    return (
+        //this is the pop up that displays the adventure form for editing
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton></Modal.Header>
+            <Modal.Body>
+                <WorkoutForm 
+                    workout={workout}
+                    handleChange={handleChange}
+                    handleSubmit={handleSubmit}
+                    heading="Edit adventure!"
+                />
+            </Modal.Body>
+        </Modal>
+    )
 }
+
+export default EditWorkout
