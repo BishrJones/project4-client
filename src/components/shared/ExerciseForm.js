@@ -14,7 +14,7 @@ const ExerciseForm = (props) => {
                     name='name'
                     onChange={handleChange}
                 />
-                <Form.Label>weight</Form.Label>
+                <Form.Label>Weight</Form.Label>
                 <Form.Control
                     placeholder='45'
                     value={exercise.weight}
